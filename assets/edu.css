@@ -362,3 +362,75 @@ ul, ol { margin: 0; }
 .callout .lead { margin-top: 16px; max-width: 46em; }
 .callout .free { justify-content: center; }
 .callout .actions { justify-content: center; margin-top: 26px; }
+
+/* ---------------------------------------------------------------- home storyline (hope, then reassurance) */
+.btn.light { background: #fff; color: var(--ink); border-color: #fff; }
+.btn.light:hover { background: transparent; color: #fff; }
+.hero2 { padding: clamp(36px, 5vw, 72px) 0 clamp(56px, 7vw, 96px); }
+.hero2-in { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+.hero2 h1 { max-width: 13ch; }
+.hero2 h1 span { display: block; color: var(--teal); }
+.hero2 .lead { margin-top: 24px; max-width: 33em; }
+.hero2 .actions { margin-top: 30px; }
+.sub-links { margin-top: 18px; font-size: var(--fs-small); color: var(--ink-soft); }
+.hero2-photo .photo { border-radius: 28px; }
+@media (max-width: 900px) {
+  .hero2-in { grid-template-columns: 1fr; }
+  .hero2-photo .photo { aspect-ratio: 16 / 11; object-position: 30% 40%; }
+}
+/* the questions people bring */
+h2.mid { max-width: 18ch; margin-inline: auto; text-align: center; }
+.asks { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px clamp(28px, 5vw, 64px); margin-top: 44px; }
+.asks h3 { font-size: var(--fs-small); font-weight: 600; color: var(--ink-soft); margin-bottom: 14px; }
+.bubbles { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.bubbles li { background: #fff; border-radius: 22px 22px 22px 6px; padding: 12px 18px; font-size: var(--fs-lead); line-height: 1.35; font-weight: 500; box-shadow: 0 1px 0 rgba(15,42,38,.06); }
+.bubbles.p li { background: var(--sand); border-radius: 22px 22px 6px 22px; }
+.answer-line { margin: 44px auto 0; max-width: 24ch; text-align: center; font: 700 clamp(24px, 2.6vw, 32px)/1.2 var(--display); letter-spacing: -0.02em; color: var(--teal); text-wrap: balance; }
+@media (max-width: 760px) { .asks { grid-template-columns: 1fr; } .bubbles li { font-size: 17px; padding: 10px 15px; } }
+/* try before you decide */
+.tries { list-style: none; padding: 0; margin: 40px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px 40px; }
+.tries > li { border-top: 2px solid var(--ink); padding-top: 16px; }
+.tries p { margin-top: 6px; color: var(--ink-soft); }
+.terr-h { margin-top: 56px; font-size: var(--fs-small); font-weight: 600; color: var(--ink-soft); }
+.terr { list-style: none; padding: 0; margin: 14px 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.terr li { display: flex; flex-direction: column; gap: 8px; min-height: 150px; padding: 20px 18px; border-radius: 18px; background: var(--mist); }
+.terr li:nth-child(1) { background: var(--deep); color: #fff; } .terr li:nth-child(1) span { color: var(--on-deep); }
+.terr li:nth-child(2) { background: #d7ecdf; }
+.terr li:nth-child(3) { background: #ffe7a3; }
+.terr li:nth-child(4) { background: #dbe7f6; }
+.terr li:nth-child(5) { background: var(--sand); }
+.terr strong { font: 700 21px/1.15 var(--display); letter-spacing: -0.015em; }
+.terr span { font-size: var(--fs-small); color: var(--ink-soft); line-height: 1.45; margin-top: auto; }
+@media (max-width: 1000px) { .terr { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .tries { grid-template-columns: 1fr; } .terr { grid-template-columns: repeat(2, minmax(0, 1fr)); } .terr li { min-height: 128px; } }
+/* the journey: the discovery space stands in for the first photo */
+.shot-tile { aspect-ratio: 4 / 5; border-radius: var(--r-photo); background: var(--deep); padding: 18px 18px 0; overflow: hidden; }
+.shot-tile img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 14px 14px 0 0; }
+.next-ch { margin-top: 44px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; font-size: var(--fs-lead); }
+.soon { font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--hi); color: var(--ink); }
+.countries { margin-top: 12px; color: var(--ink-soft); }
+/* what makes Yondo different */
+.diffs { list-style: none; padding: 0; margin: 44px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px clamp(32px, 5vw, 72px); }
+.diffs > li { border-top: 2px solid rgba(255,255,255,.3); padding-top: 22px; }
+.diffs h3 { font: 700 clamp(24px, 2.4vw, 32px)/1.12 var(--display); letter-spacing: -0.02em; color: #fff; }
+.diffs p { margin-top: 10px; color: var(--on-deep); max-width: 34em; }
+@media (max-width: 760px) { .diffs { grid-template-columns: 1fr; gap: 28px; } }
+/* founders, short */
+.founders { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 32px clamp(32px, 6vw, 88px); align-items: center; }
+.founder-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 22px; }
+.founder-list li { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 20px; align-items: center; }
+.founder-list img { width: 112px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; background: var(--mist); }
+.founder-list h3 { font: 700 22px/1.2 var(--display); letter-spacing: -0.015em; }
+.founder-list p { margin-top: 4px; color: var(--ink-soft); font-size: 17px; }
+@media (max-width: 860px) { .founders { grid-template-columns: 1fr; } }
+/* closing: two ways to start */
+.close { padding: clamp(64px, 8vw, 104px) 0; }
+.close h2 { color: #fff; max-width: none; }
+.ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 32px; }
+.way { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 26px; border-radius: 20px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.16); }
+.way h3 { color: #fff; font: 700 24px/1.2 var(--display); letter-spacing: -0.015em; }
+.way p { color: var(--on-deep); flex: 1; }
+.way .btn { margin-top: 10px; }
+.close-note { margin-top: 22px; color: var(--on-deep); font-size: var(--fs-small); }
+.close-note a { color: #fff; }
+@media (max-width: 760px) { .ways { grid-template-columns: 1fr; } .way { padding: 22px; } }
