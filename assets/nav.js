@@ -1,9 +1,9 @@
-/* Yondo Education menus. The menus work without this file (they are <details> elements);
+/* Yondo Education menus. They work without this file (they are <details> elements);
    this adds what people expect: one menu open at a time, Escape and outside-click to close,
-   focus moved into the phone menu and back, and closing after a link is chosen. */
+   focus moved into the phone "More" sheet and back, and closing after a link is chosen. */
 (function () {
   'use strict';
-  var menus = Array.prototype.slice.call(document.querySelectorAll('header.top details'));
+  var menus = Array.prototype.slice.call(document.querySelectorAll('header.top details, nav.tabbar details'));
   if (!menus.length) return;
   function close(m, returnFocus) {
     if (!m.open) return;
@@ -17,8 +17,8 @@
       if (summary) summary.setAttribute('aria-expanded', String(m.open));
       if (!m.open) return;
       menus.forEach(function (o) { if (o !== m) close(o, false); });
-      if (m.classList.contains('menu')) {
-        var first = m.querySelector('.drawer a');
+      if (m.classList.contains('more')) {
+        var first = m.querySelector('.sheet a');
         if (first) setTimeout(function () { first.focus(); }, 30);
       }
     });
@@ -29,25 +29,31 @@
       if (m.classList.contains('dd') && e.relatedTarget && !m.contains(e.relatedTarget)) close(m, false);
     });
   });
+  // Outside click (including the dimmed backdrop behind the More sheet) closes.
   document.addEventListener('click', function (e) {
-    menus.forEach(function (m) { if (m.open && !m.contains(e.target)) close(m, false); });
+    menus.forEach(function (m) {
+      if (!m.open) return;
+      var sheet = m.querySelector('.sheet'), summary = m.querySelector('summary');
+      var inside = sheet ? (sheet.contains(e.target) || summary.contains(e.target)) : m.contains(e.target);
+      if (!inside) { e.preventDefault(); close(m, false); }
+    });
   });
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Escape') return;
     menus.forEach(function (m) { if (m.open) close(m, true); });
   });
-  // Keep keyboard focus inside the full-screen phone menu while it is open.
+  // Keep keyboard focus inside the More sheet while it is open.
   document.addEventListener('keydown', function (e) {
     if (e.key !== 'Tab') return;
-    var m = document.querySelector('header.top details.menu[open]');
-    if (!m || getComputedStyle(m.querySelector('.drawer')).position !== 'fixed') return;
-    var items = Array.prototype.slice.call(m.querySelectorAll('summary, .drawer a'));
+    var m = document.querySelector('nav.tabbar details.more[open]');
+    if (!m) return;
+    var items = Array.prototype.slice.call(m.querySelectorAll('summary, .sheet a'));
     var first = items[0], last = items[items.length - 1];
     if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
   });
-  // Close the phone menu if the window grows past the phone layout.
+  // Close the More sheet if the window grows past the phone and tablet layout.
   var wide = window.matchMedia('(min-width: 1101px)');
-  var onWide = function () { if (wide.matches) menus.forEach(function (m) { if (m.classList.contains('menu')) close(m, false); }); };
+  var onWide = function () { if (wide.matches) menus.forEach(function (m) { if (m.classList.contains('more')) close(m, false); }); };
   if (wide.addEventListener) wide.addEventListener('change', onWide); else if (wide.addListener) wide.addListener(onWide);
 })();
